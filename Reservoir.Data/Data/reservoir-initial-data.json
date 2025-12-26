@@ -1,0 +1,5 @@
+[
+  { "Id": 1, "X": 10.5, "Y": 20.0, "Z": -1500, "Pressure": 1200.5, "Temperature": 45.2, "LayerName": "Sandstone A" },
+  { "Id": 2, "X": 12.0, "Y": 21.5, "Z": -1550, "Pressure": 1180.2, "Temperature": 46.8, "LayerName": "Sandstone A" },
+  { "Id": 3, "X": 15.2, "Y": 19.8, "Z": -1600, "Pressure": 1250.8, "Temperature": 48.1, "LayerName": "Shale B" }
+]

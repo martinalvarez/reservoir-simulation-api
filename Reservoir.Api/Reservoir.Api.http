@@ -1,0 +1,11 @@
+@Reservoir.Api_HostAddress = http://localhost:5085
+
+# Obtener todos los puntos
+GET {{Reservoir.Api_HostAddress}}/api/Reservoir/data
+Accept: application/json
+
+###
+
+# Obtener estadísticas
+GET {{Reservoir.Api_HostAddress}}/api/Reservoir/stats
+Accept: application/json
