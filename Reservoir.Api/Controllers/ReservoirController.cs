@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Reservoir.Service.Interfaces;
-using Reservoir.Data.Models;
+using Reservoir.Api.DTOs;
 
 namespace Reservoir.Api.Controllers;
 
@@ -16,16 +16,29 @@ public class ReservoirController : ControllerBase
     }
 
     [HttpGet("data")]
-    public IActionResult GetData()
+    public async Task<ActionResult<IEnumerable<ReservoirPointDto>>> GetData()    
     {
-        var data = _service.GetSimulationData();
-        return Ok(data);
+        await Task.Delay(500);
+
+        var rawData = _service.GetSimulationData();
+        
+        var dtoData = rawData.Select(p => new ReservoirPointDto(
+            p.Id, 
+            p.LayerName, 
+            p.Pressure, 
+            p.Temperature,
+            p.X,
+            p.Y,
+            p.Z
+        ));
+
+        return Ok(dtoData);
     }
 
     [HttpGet("stats")]
-    public IActionResult GetStats()
+    public ActionResult<ReservoirStatsDto> GetStats()
     {
         var avg = _service.GetAveragePressure();
-        return Ok(new { AveragePressure = avg });
+        return Ok(new ReservoirStatsDto(avg));
     }
 }
